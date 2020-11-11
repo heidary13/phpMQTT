@@ -639,9 +639,9 @@ class phpMQTT
     {
         $strlen = strlen($string);
         for ($j = 0; $j < $strlen; $j++) {
-            $num = ord($string{$j});
+            $num = ord($string[$j]);
             if ($num > 31) {
-                $chr = $string{$j};
+                $chr = $string[$j];
             } else {
                 $chr = ' ';
             }
