@@ -583,7 +583,7 @@ class phpMQTT
         $multiplier = 1;
         $value = 0;
         do {
-            $digit = ord($msg{$i});
+            $digit = ord($msg[$i]);
             $value += ($digit & 127) * $multiplier;
             $multiplier *= 128;
             $i++;
