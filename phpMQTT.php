@@ -239,14 +239,14 @@ class phpMQTT
 
         $string = $this->read(4);
 
-        if (ord($string{0}) >> 4 === 2 && $string{3} === chr(0)) {
+        if (ord($string[0]) >> 4 === 2 && $string[3] === chr(0)) {
             $this->_debugMessage('Connected to Broker');
         } else {
             $this->_errorMessage(
                 sprintf(
                     "Connection failed! (Error: 0x%02x 0x%02x)\n",
-                    ord($string{0}),
-                    ord($string{3})
+                    ord($string[0]),
+                    ord($string[3])
                 )
             );
             return false;
