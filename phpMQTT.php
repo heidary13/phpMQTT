@@ -365,8 +365,8 @@ class phpMQTT
     public function disconnect(): void
     {
         $head = ' ';
-        $head{0} = chr(0xe0);
-        $head{1} = chr(0x00);
+        $head[0] = chr(0xe0);
+        $head[1] = chr(0x00);
         fwrite($this->socket, $head, 2);
     }
 
@@ -414,7 +414,7 @@ class phpMQTT
             ++$cmd;
         }
 
-        $head{0} = chr($cmd);
+        $head[0] = chr($cmd);
         $head .= $this->setmsglength($i);
 
         fwrite($this->socket, $head, strlen($head));
@@ -449,7 +449,7 @@ class phpMQTT
      */
     public function message($msg)
     {
-        $tlen = (ord($msg{0}) << 8) + ord($msg{1});
+        $tlen = (ord($msg[0]) << 8) + ord($msg[1]);
         $topic = substr($msg, 2, $tlen);
         $msg = substr($msg, ($tlen + 2));
         $found = false;
